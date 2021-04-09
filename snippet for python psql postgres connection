@@ -1,0 +1,34 @@
+#Working snippet for python psql postgres connection. 
+
+
+import psycopg2
+
+#Open SQL shell (psql) and connect to the database like so:
+#Hit enter for all and specify password to match password here
+
+
+DB_NAME = 'runtimeLogs'
+DB_USER = 'postgres'
+DB_PASS = '%passwordString%'
+DB_HOST = 'localhost'
+
+conn = psycopg2.connect(dbname = DB_NAME, user= DB_USER, password = DB_PASS, host = DB_HOST)
+
+
+cur = conn.cursor()
+
+cur.execute('CREATE TABLE runtimeLogLocal (id SERIAL PRIMARY KEY, name  VARCHAR);')
+
+#cur.execute('INSERT INTO buyLogs (ID) VALUES(' +lines[10].split(" ")[0]+ ')')
+
+#cur.execute("INSERT INTO student (name) VALUES(%s)", ("Mark",))
+
+#cur.execute("SELECT * FROM student;")
+
+#print(cur.fetchone())
+
+conn.commit()
+
+cur.close()
+
+conn.close()
